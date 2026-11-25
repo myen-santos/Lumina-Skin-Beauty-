@@ -1,0 +1,885 @@
+/* ==========================================================================
+   LUMINA SKIN & BEAUTY — Editorial Luxury Skincare & Makeup Consultation
+   ========================================================================== */
+
+:root {
+  --bg-alabaster: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --bg-sand: #F2ECE4;
+  --text-espresso: #231F1E;
+  --text-taupe: #6E655F;
+  --accent-terracotta: #C47D68;
+  --accent-terracotta-dark: #A86450;
+  --accent-sage: #7A8B7A;
+  --border-hairline: #E6DFD7;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 12px 32px rgba(35, 31, 30, 0.04);
+  --transition: 0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-alabaster);
+  color: var(--text-espresso);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--text-espresso);
+}
+
+h1 { font-size: clamp(2.5rem, 4.5vw, 3.85rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(2rem, 3.2vw, 2.75rem); margin-bottom: 0.5rem; }
+h3 { font-size: 1.55rem; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+  margin-bottom: 0.75rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--text-espresso);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-terracotta);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-espresso);
+  border-color: var(--border-hairline);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--text-espresso);
+  background-color: var(--bg-sand);
+}
+
+.btn-outline-sm {
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  border: 1px solid var(--text-espresso);
+  color: var(--text-espresso);
+  background: transparent;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.btn-outline-sm:hover {
+  background: var(--text-espresso);
+  color: #FFFFFF;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+
+.brand-logo {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-espresso);
+  text-decoration: none;
+}
+
+.brand-logo span {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--text-taupe);
+  margin-left: 6px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-taupe);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--text-espresso);
+}
+
+/* Hero Section */
+.hero {
+  padding: 76px 0 84px;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-lead {
+  font-size: 1.08rem;
+  color: var(--text-taupe);
+  margin: 20px 0 32px;
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-editorial-card {
+  background: var(--bg-sand);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-hairline);
+}
+
+.editorial-frame {
+  background: var(--bg-card);
+  padding: 36px 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hairline);
+}
+
+.editorial-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent-sage);
+  margin-bottom: 14px;
+}
+
+.editorial-frame p {
+  font-size: 0.92rem;
+  color: var(--text-taupe);
+  margin: 12px 0 28px;
+}
+
+.editorial-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 20px;
+  border-top: 1px solid var(--border-hairline);
+  gap: 12px;
+}
+
+.editorial-metrics strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: var(--text-espresso);
+}
+
+.editorial-metrics span {
+  font-size: 0.75rem;
+  color: var(--text-taupe);
+}
+
+/* General Sections */
+.section {
+  padding: 84px 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.section-header {
+  max-width: 640px;
+  margin-bottom: 44px;
+}
+
+.section-header p, .section-sub {
+  color: var(--text-taupe);
+  font-size: 0.98rem;
+}
+
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+/* Optical Camera Scanner */
+.scanner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.camera-card, .diagnosis-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.viewport-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #1C1918;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cameraFeed,
+#uploadedPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#cameraFeed {
+  transform: scaleX(-1); /* Mirror live webcam */
+}
+
+.camera-placeholder {
+  text-align: center;
+  color: #FAF8F5;
+  padding: 24px;
+  max-width: 390px;
+}
+
+.camera-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--accent-terracotta);
+}
+
+.camera-placeholder h4 {
+  color: #FAF8F5;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+}
+
+.camera-placeholder p {
+  font-size: 0.84rem;
+  color: #CFC7C0;
+  margin-bottom: 16px;
+}
+
+.placeholder-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.placeholder-btn-group .btn-primary {
+  background-color: var(--accent-terracotta);
+  color: #FFFFFF;
+}
+
+.placeholder-btn-group .btn-primary:hover {
+  background-color: var(--accent-terracotta-dark);
+}
+
+.upload-label {
+  color: #FAF8F5;
+  border-color: rgba(250, 248, 245, 0.35);
+}
+
+.upload-label:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #FAF8F5;
+}
+
+.camera-note {
+  margin-top: 12px !important;
+  font-size: 0.76rem !important;
+  line-height: 1.45;
+  color: #F2B5A4 !important;
+}
+
+/* Face Reticle & Scan Animation */
+.scan-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.face-reticle {
+  position: relative;
+  width: 56%;
+  height: 72%;
+  border-radius: 45% 45% 48% 48%;
+  border: 1px dashed rgba(250, 248, 245, 0.45);
+  overflow: hidden;
+}
+
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--accent-terracotta);
+  border-style: solid;
+}
+
+.tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+.bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+.laser-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-terracotta), #FFF, var(--accent-terracotta), transparent);
+  box-shadow: 0 0 12px var(--accent-terracotta);
+  top: 0;
+  opacity: 0;
+}
+
+.laser-line.scanning {
+  opacity: 1;
+  animation: scanSweep 1.6s ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0% { top: 5%; }
+  50% { top: 95%; }
+  100% { top: 5%; }
+}
+
+.scan-status-pill {
+  position: absolute;
+  bottom: 16px;
+  background: rgba(35, 31, 30, 0.82);
+  color: #FAF8F5;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.camera-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.camera-controls .btn {
+  flex: 1;
+}
+
+/* Segmented Skin Tabs */
+.control-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--text-taupe);
+  margin-bottom: 10px;
+}
+
+.segmented-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--bg-sand);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hairline);
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-taupe);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.tab-btn.active {
+  background: var(--bg-card);
+  color: var(--text-espresso);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.status-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: rgba(122, 139, 122, 0.14);
+  color: var(--accent-sage);
+}
+
+.confidence-text {
+  font-size: 0.78rem;
+  color: var(--text-taupe);
+}
+
+.skin-summary {
+  font-size: 0.92rem;
+  color: var(--text-taupe);
+  margin: 10px 0 22px;
+}
+
+.biomarker-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  background: var(--bg-alabaster);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hairline);
+  margin-bottom: 22px;
+}
+
+.metric-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.progress-track {
+  height: 6px;
+  background: var(--border-hairline);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-terracotta);
+  border-radius: 4px;
+  transition: width 0.45s ease;
+}
+
+.key-priorities h4 {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-taupe);
+  margin-bottom: 10px;
+}
+
+.key-priorities ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.key-priorities li {
+  font-size: 0.88rem;
+  padding-left: 18px;
+  position: relative;
+}
+
+.key-priorities li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-terracotta);
+  font-weight: bold;
+}
+
+/* Makeup Wardrobe Grid */
+.active-pill-indicator {
+  font-size: 0.84rem;
+  color: var(--text-taupe);
+  background: var(--bg-sand);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-hairline);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.product-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.step-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-terracotta);
+}
+
+.finish-tag {
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  background: var(--bg-sand);
+  color: var(--text-espresso);
+  border-radius: 3px;
+}
+
+.product-card h3 {
+  font-size: 1.45rem;
+  margin-bottom: 6px;
+}
+
+.product-archetype {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-sage);
+  margin-bottom: 14px;
+}
+
+.product-why {
+  font-size: 0.9rem;
+  color: var(--text-taupe);
+  margin-bottom: 18px;
+}
+
+.ingredient-box {
+  background: var(--bg-alabaster);
+  border-left: 2px solid var(--accent-sage);
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+}
+
+.ingredient-box strong {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-espresso);
+  margin-bottom: 2px;
+}
+
+.usage-tip {
+  padding-top: 14px;
+  border-top: 1px solid var(--border-hairline);
+  font-size: 0.84rem;
+  color: var(--text-espresso);
+}
+
+.usage-tip span {
+  font-weight: 600;
+  color: var(--accent-terracotta);
+}
+
+/* Skincare Routine Section */
+.skincare-section {
+  background: var(--bg-sand);
+}
+
+.routine-toggle {
+  display: inline-flex;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hairline);
+}
+
+.routine-btn {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text-taupe);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.routine-btn.active {
+  background: var(--text-espresso);
+  color: #FFFFFF;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.step-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-terracotta);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.step-card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.step-active {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-sage);
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 0.88rem;
+  color: var(--text-taupe);
+}
+
+/* Artistry Masterclass Guide */
+.guide-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: 32px;
+}
+
+.guide-tab {
+  padding: 12px 22px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-taupe);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.guide-tab.active {
+  color: var(--text-espresso);
+  border-bottom-color: var(--accent-terracotta);
+}
+
+.guide-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.guide-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+
+.guide-item-num {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent-terracotta);
+  margin-bottom: 10px;
+}
+
+.guide-item h4 {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.guide-item p {
+  font-size: 0.9rem;
+  color: var(--text-taupe);
+}
+
+/* Footer */
+.footer {
+  padding: 48px 0;
+  background: var(--bg-alabaster);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-note {
+  font-size: 0.82rem;
+  color: var(--text-taupe);
+  max-width: 520px;
+  margin-top: 8px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 0.84rem;
+  color: var(--text-taupe);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--text-espresso);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 960px) {
+  .hero-grid,
+  .scanner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guide-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .camera-controls {
+    flex-direction: column;
+  }
+}

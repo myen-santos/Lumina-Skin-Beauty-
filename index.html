@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumina Skin &amp; Beauty | Editorial Makeup &amp; Skincare Consultation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo">LUMINA <span>SKIN &amp; BEAUTY</span></a>
+      <nav class="nav-links">
+        <a href="#scanner">Skin Studio</a>
+        <a href="#wardrobe">Makeup Wardrobe</a>
+        <a href="#skincare">Skincare Ritual</a>
+        <a href="#masterclass">Artistry Guide</a>
+      </nav>
+      <a href="#scanner" class="btn btn-outline-sm">Begin Analysis</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">BESPOKE DERMATOLOGICAL ARTISTRY</span>
+        <h1>Formulations calibrated to your skin’s natural chemistry.</h1>
+        <p class="hero-lead">
+          Discover curated makeup wardrobes, targeted active ingredients, and step-by-step application techniques tailored specifically for Oily, Dry, and Sensitive complexions.
+        </p>
+        <div class="hero-actions">
+          <a href="#scanner" class="btn btn-primary">Launch Optical Scanner</a>
+          <a href="#wardrobe" class="btn btn-secondary">Explore Profiles</a>
+        </div>
+      </div>
+      <div class="hero-editorial-card">
+        <div class="editorial-frame">
+          <div class="editorial-badge">01 / OPTICAL DIAGNOSIS</div>
+          <h3>Precision Complexion Mapping</h3>
+          <p>Analyze surface luminosity, hydration levels, and barrier sensitivity in real time using on-device camera processing—zero photos stored or uploaded.</p>
+          <div class="editorial-metrics">
+            <div>
+              <strong>3</strong>
+              <span>Core Profiles</span>
+            </div>
+            <div>
+              <strong>15+</strong>
+              <span>Curated Formulas</span>
+            </div>
+            <div>
+              <strong>100%</strong>
+              <span>Private On-Device</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Live Camera Skin Analyzer -->
+  <section id="scanner" class="section scanner-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">OPTICAL CONSULTATION STUDIO</span>
+        <h2>Analyze Your Complexion</h2>
+        <p>Enable your live camera—or snap/upload a selfie—to evaluate surface shine, texture, and redness.</p>
+      </div>
+
+      <div class="scanner-grid">
+        <!-- Camera Viewport Card -->
+        <div class="camera-card">
+          <div class="viewport-wrapper" id="viewportWrapper">
+            <video id="cameraFeed" autoplay playsinline muted></video>
+            <img id="uploadedPreview" alt="Uploaded face preview" hidden />
+            <canvas id="analysisCanvas" width="320" height="240" hidden></canvas>
+
+            <!-- Idle Overlay -->
+            <div class="camera-placeholder" id="cameraPlaceholder">
+              <div class="camera-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+              </div>
+              <h4>Optical Skin Mirror</h4>
+              <p>Position your face in natural, even lighting for best luminosity and redness evaluation.</p>
+              <div class="placeholder-btn-group">
+                <button type="button" id="startCameraBtn" class="btn btn-primary">Enable Live Camera</button>
+                <label for="photoUploadInput" class="btn btn-secondary upload-label">Take / Upload Photo</label>
+                <input type="file" id="photoUploadInput" accept="image/*" capture="user" hidden />
+              </div>
+              <p class="camera-note" id="cameraErrorMsg"></p>
+            </div>
+
+            <!-- Active Reticle & Laser Scan Overlay -->
+            <div class="scan-overlay" id="scanOverlay" hidden>
+              <div class="face-reticle">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <div class="laser-line" id="laserLine"></div>
+              </div>
+              <div class="scan-status-pill" id="scanStatusPill">Align face within frame</div>
+            </div>
+          </div>
+
+          <div class="camera-controls">
+            <button type="button" id="captureScanBtn" class="btn btn-primary" disabled>Capture &amp; Analyze Skin</button>
+            <button type="button" id="stopCameraBtn" class="btn btn-secondary" hidden>Reset Camera</button>
+          </div>
+        </div>
+
+        <!-- Diagnosis & Manual Selector Card -->
+        <div class="diagnosis-card">
+          <div class="manual-selector-block">
+            <label class="control-label">ACTIVE SKIN PROFILE (OR SELECT MANUALLY)</label>
+            <div class="segmented-tabs" role="tablist" aria-label="Skin Type Selector">
+              <button type="button" class="tab-btn active" data-skin="oily" role="tab" aria-selected="true">Oily Skin</button>
+              <button type="button" class="tab-btn" data-skin="dry" role="tab" aria-selected="false">Dry Skin</button>
+              <button type="button" class="tab-btn" data-skin="sensitive" role="tab" aria-selected="false">Sensitive Skin</button>
+            </div>
+          </div>
+
+          <div class="diagnosis-result" id="diagnosisResult">
+            <div class="result-header">
+              <span class="status-tag" id="diagnosisBadge">PROFILE ACTIVE</span>
+              <span class="confidence-text" id="confidenceText">Curated Dermatological Match</span>
+            </div>
+            <h3 id="skinTitle">Oily &amp; Shine-Prone Complexion</h3>
+            <p id="skinSummary" class="skin-summary"></p>
+
+            <div class="biomarker-bars">
+              <div class="metric-row">
+                <div class="metric-labels">
+                  <span>Sebum &amp; Surface Shine</span>
+                  <span id="sebumVal">High</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" id="sebumBar" style="width: 85%;"></div></div>
+              </div>
+              <div class="metric-row">
+                <div class="metric-labels">
+                  <span>Moisture Barrier Retention</span>
+                  <span id="hydrationVal">Moderate</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" id="hydrationBar" style="width: 55%;"></div></div>
+              </div>
+              <div class="metric-row">
+                <div class="metric-labels">
+                  <span>Vascular Reactivity / Sensitivity</span>
+                  <span id="reactivityVal">Low</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" id="reactivityBar" style="width: 28%;"></div></div>
+              </div>
+            </div>
+
+            <div class="key-priorities">
+              <h4>Primary Formulation Priorities</h4>
+              <ul id="priorityList"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personalized Makeup Wardrobe -->
+  <section id="wardrobe" class="section wardrobe-section">
+    <div class="container">
+      <div class="section-header-flex">
+        <div>
+          <span class="eyebrow">CURATED COSMETIC ARCHITECTURE</span>
+          <h2 id="wardrobeHeading">Recommended Makeup Wardrobe: Oily Skin</h2>
+        </div>
+        <div class="active-pill-indicator">
+          Showing 5-Step Regimen for <strong id="wardrobeSkinLabel">Oily Skin</strong>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- AM / PM Skincare Preparation Routine -->
+  <section id="skincare" class="section skincare-section">
+    <div class="container">
+      <div class="section-header-flex">
+        <div>
+          <span class="eyebrow">CANVAS PREPARATION</span>
+          <h2 id="skincareHeading">Skincare Ritual for Oily Skin</h2>
+          <p class="section-sub">Great makeup begins with balanced skin barrier prep. Toggle between morning primer prep and evening recovery.</p>
+        </div>
+
+        <div class="routine-toggle" role="group" aria-label="Time of Day Routine">
+          <button type="button" class="routine-btn active" data-time="am">AM Pre-Makeup Prep</button>
+          <button type="button" class="routine-btn" data-time="pm">PM Barrier Recovery</button>
+        </div>
+      </div>
+
+      <div class="timeline-grid" id="skincareTimeline"></div>
+    </div>
+  </section>
+
+  <!-- Artistry Masterclass & Application Guide -->
+  <section id="masterclass" class="section masterclass-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">TECHNIQUE &amp; INGREDIENT INTELLIGENCE</span>
+        <h2 id="masterclassHeading">Artistry Masterclass: Oily Complexion</h2>
+        <p>Master the tools, placement methods, and ingredient rules that make makeup last seamlessly all day.</p>
+      </div>
+
+      <div class="guide-tabs">
+        <button type="button" class="guide-tab active" data-guide="howToApply">How to Apply</button>
+        <button type="button" class="guide-tab" data-guide="proTips">Pro Artistry Tips</button>
+        <button type="button" class="guide-tab" data-guide="avoidList">What to Avoid</button>
+      </div>
+
+      <div class="guide-panel" id="guidePanel"></div>
+    </div>
+  </section>
+
+  <!-- Editorial Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="brand-logo">LUMINA <span>SKIN &amp; BEAUTY</span></div>
+        <p class="footer-note">Dermatologically informed cosmetic guidance. Camera analysis runs 100% locally in your browser; no facial imagery is ever recorded or transmitted.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#scanner">Optical Scanner</a>
+        <a href="#wardrobe">Makeup Wardrobe</a>
+        <a href="#skincare">Skincare Ritual</a>
+        <a href="#masterclass">Artistry Guide</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
